@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  kagua:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pakua code
+        uses: actions/checkout@v4
+
+      - name: Orodhesha files
+        run: ls -la
+
+      - name: Hakikisha habari.txt ipo
+        run: test -f habari.txt
+
+      - name: Hakikisha hakuna alama za conflict
+        run: |
+          if grep -rIn --exclude-dir=.git --exclude-dir=.github -e '^<<<<<<<' -e '^>>>>>>>' .; then
+            echo "Imepatikana alama za merge conflict!"
+            exit 1
+          fi
+          echo "Hakuna conflict markers"
