@@ -1,0 +1,16 @@
+# Secrets
+.env
+*.key
+*.pem
+secrets.txt
+
+# Dependencies
+node_modules/
+
+# Logs na files za muda
+*.log
+*.tmp
+
+# Files za mfumo
+.DS_Store
+Thumbs.db
